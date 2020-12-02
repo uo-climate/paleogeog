@@ -1,8 +1,7 @@
 
+## Late-Quaternary paleogeography ##
 
 <img src="R/pngs/globe/globe_14.0_ka.png" alt="drawing" width="600"/>
-
-## Late-Quaternary paleogeography ##
 
 This repository contains a set of shapefiles intended as a cartographic resource for mapping paleo data over the past 26,000 years.  This particular set of shapefiles include:
 
