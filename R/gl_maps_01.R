@@ -53,7 +53,7 @@ ice_rob <- st_transform(ice_lcc, crs = st_crs(robinson_projstring))
 
 # plot projected shapefiles
 png_file <- paste("pngs/globe/globe_", age, "_ka.png", sep="")
-png(file = png_file, width=1600, height= 800)
+png(file = png_file, width=1200, height= 600)
 
 plot(st_geometry(gl_bb_rob), col="white", border="black", lwd=2) 
 plot(st_geometry(gl_grat30_rob), col="gray50", add=TRUE)
