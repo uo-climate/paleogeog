@@ -13,7 +13,7 @@ gl_admin1_rob <- st_read(paste(shape_path, "gl_admin1_rob/gl_admin1_rob.shp", se
 gl_lrglakes_rob <- st_read(paste(shape_path, "gl_lrglakes_rob/gl_lrglakes_rob.shp", sep=""))
 gl_bbline_rob <- st_cast(st_geometry(gl_bb_rob), "LINESTRING") # convert polygon to line
 
-# read and project, shoreline, proglacial lake and ice-sheet outlines
+# read and project, shoreline, proglacial-lake and ice-sheet outlines
 
 # set age
 age <- "14.0"
