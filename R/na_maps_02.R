@@ -5,16 +5,17 @@ library(sf)
 # read projected shapefiles for basemap
 shape_path <- paste(getwd(), "/ne_shp_projected/", sep="")
 
-gl_bb_rob <- st_read(paste(shape_path, "gl_bb_rob/gl_bb_rob.shp", sep=""))
-gl_grat30_rob <- st_read(paste(shape_path, "gl_grat30_rob/gl_grat30_rob.shp", sep=""))
-gl_coast_rob <- st_read(paste(shape_path, "gl_coast_rob/gl_coast_rob.shp", sep=""))
-gl_admin0_rob <- st_read(paste(shape_path, "gl_admin0_rob/gl_admin0_rob.shp", sep=""))
-gl_admin1_rob <- st_read(paste(shape_path, "gl_admin1_rob/gl_admin1_rob.shp", sep=""))
-gl_lrglakes_rob <- st_read(paste(shape_path, "gl_lrglakes_rob/gl_lrglakes_rob.shp", sep=""))
-gl_bbline_rob <- st_cast(st_geometry(gl_bb_rob), "LINESTRING") # convert polygon to line
+na_bb_lcc <- st_read(paste(shape_path, "na_bb_lcc/na_bb_lcc.shp", sep=""))
+na_grat30_lcc <- st_read(paste(shape_path, "na_grat30_lcc/na_grat30_lcc.shp", sep=""))
+na_coast_lcc <- st_read(paste(shape_path, "na_coast_lcc/na_coast_lcc.shp", sep=""))
+na_admin0_lcc <- st_read(paste(shape_path, "na_admin0_lcc/na_admin0_lcc.shp", sep=""))
+na_admin1_lcc <- st_read(paste(shape_path, "na_admin1_lcc/na_admin1_lcc.shp", sep=""))
+na_lrglakes_lcc <- st_read(paste(shape_path, "na_lrglakes_lcc/na_lrglakes_lcc.shp", sep=""))
+na_bbline_lcc <- st_cast(st_geometry(na_bb_lcc), "LINESTRING") # convert polygon to line
 
 # read and project, shoreline, proglacial-lake and ice-sheet outlines
 
+# i <- 26
 for (i in seq(0, 26, by=1)) {
   
   # set age
@@ -44,34 +45,34 @@ for (i in seq(0, 26, by=1)) {
   # plot(st_geometry(ice_lcc), col="pink", add=TRUE)
   st_crs(ice_lcc)
 
-  # transform shapefiles to Robinson projection
+  # transform shapefiles to Lambert projection
 
-  # set CRS
-  robinson_projstring <- "+proj=robin +lon_0=0w"
-  robinson_projstring
+  # get CRS
+  lcc_crs <- st_crs(pglake_lcc)
+  lcc_crs
 
   # do projections
-  shoreline_rob <- st_transform(shoreline_sf, crs = st_crs(robinson_projstring))
-  pglake_rob <- st_transform(pglake_lcc, crs = st_crs(robinson_projstring))
-  ice_rob <- st_transform(ice_lcc, crs = st_crs(robinson_projstring))
+  shoreline_lcc <- st_transform(shoreline_sf, crs = st_crs(lcc_crs))
+  # pglake_lcc <- st_transform(pglake_lcc, crs = st_crs(lcc_crs))
+  ice_lcc <- st_transform(ice_lcc, crs = st_crs(lcc_crs))
 
   # plot projected shapefiles
-  png_file <- paste("pngs/globe/globe_", age, "_ka.png", sep="")
+  png_file <- paste("pngs/NorthAmerica/na_", age, "_ka.png", sep="")
   png(file = png_file, width=1200, height= 600)
 
-  plot(st_geometry(gl_bb_rob), col="white", border="black", lwd=2)
-  plot(st_geometry(gl_grat30_rob), col="gray50", add=TRUE)
-  plot(st_geometry(gl_coast_rob), col="gray80", add=TRUE)
-  plot(st_geometry(gl_admin0_rob), border="gray80", add=TRUE)
-  plot(st_geometry(gl_admin1_rob), border="gray80", add=TRUE)
-  plot(st_geometry(gl_lrglakes_rob), border="gray80", add=TRUE)
+  plot(st_geometry(na_bb_lcc), col="white", border="black", lwd=2)
+  plot(st_geometry(na_grat30_lcc), col="gray50", add=TRUE)
+  plot(st_geometry(na_coast_lcc), col="gray80", add=TRUE)
+  plot(st_geometry(na_admin0_lcc), border="gray80", add=TRUE)
+  plot(st_geometry(na_admin1_lcc), border="gray80", add=TRUE)
+  plot(st_geometry(na_lrglakes_lcc), border="gray80", add=TRUE)
 
-  plot(st_geometry(shoreline_rob), col="black", lwd=1.5, add=TRUE)
-  plot(st_geometry(pglake_rob), col="lightblue", add=TRUE)
-  plot(st_geometry(ice_rob), col="plum1", add=TRUE)
-  plot(st_geometry(gl_bbline_rob), col="black", lwd=2, add=TRUE)
+  plot(st_geometry(st_crop(shoreline_lcc, na_bb_lcc)), col="black", lwd=1.5, add=TRUE)
+  plot(st_geometry(pglake_lcc), col="lightblue", add=TRUE)
+  plot(st_geometry(st_crop(ice_lcc, na_bb_lcc)), col="plum1", add=TRUE)
+  plot(st_geometry(na_bbline_lcc), col="black", lwd=2, add=TRUE)
 
-  text(-14000000, -7700000, pos=1, cex=2.0, title)
+  text(-3600000, -3000000, pos=1, cex=2.0, title)
 
   dev.off()
 

@@ -38,7 +38,7 @@ ice_path <- paste("../IceSheets/NorthAmericaIceSheets/ice_GSC_26.0ka/", sep="")
 ice_shapefile <- paste("ice_GSC_26.0ka.shp", sep="")
 ice_lcc <- st_read(paste(ice_path, ice_shapefile, sep=""))
 plot(st_geometry(ice_lcc), col="pink")
-lcc_crs <- st_crs(ice_lcc,)
+lcc_crs <- st_crs(ice_lcc)
 lcc_crs
 ice_bb <- st_bbox(ice_lcc)
 ice_bb
@@ -116,7 +116,7 @@ st_write(na_lrglakes_lcc, dsn="na_lrglakes_lcc", driver="ESRI Shapefile")
 setwd(wd) 
 
 # test by reading back in
-test_shapefile <- paste(getwd(), shapefile_dir, "/na_coast_lcc/na_coast_lcc.shp", sep="")
+test_shapefile <- paste(getwd(), shapefile_dir, "/na_bb_lcc/na_bb_lcc.shp", sep="")
 test_sf <- st_read(test_shapefile)
 plot(st_geometry(test_sf))
 
