@@ -17,8 +17,8 @@ The folders include:
 |:----------- |:------------------------------------------------------|
 |`/GlacialLakes`   | Proglacial lakes in North America from GSC-OF1574  | 
 |`/IceSheets`      | Ice sheets from GSC-OF1574 for North America and from DATED-1 for Europe, as well as a set of merged files for the globe |
-|`/R`              | R code for mapping the various shape files | 
 |`/Shorelines`     | Inferred shorelines from ICE-6G topographic anomalies   | 
+|`/R`              | R code for mapping the various shape files | 
 
 This is a preliminary version with inferred shorelines at 1 kyr intervals, paired with lake and ice sheet outlines selected from those available.
 
