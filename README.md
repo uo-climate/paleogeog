@@ -20,5 +20,5 @@ The folders include:
 |`/R`              | R code for mapping the various shape files | 
 |`/Shorelines`     | Inferred shorelines from ICE-6G topographic anomalies   | 
 
-This is preliminary version with inferred shorelines at 1 kyr intervals, paired with lake and ice sheet outlines selected from those available.
+This is a preliminary version with inferred shorelines at 1 kyr intervals, paired with lake and ice sheet outlines selected from those available.
 
