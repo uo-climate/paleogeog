@@ -57,8 +57,8 @@ for (i in seq(0, 26, by=1)) {
   ice_lcc <- st_transform(ice_lcc, crs = st_crs(lcc_crs))
 
   # plot projected shapefiles
-  png_file <- paste("pngs/NorthAmerica/na_", age, "_ka.png", sep="")
-  png(file = png_file, width=1200, height= 600)
+  png_file <- paste("pngs/na/na_", age, "_ka.png", sep="")
+  png(file = png_file, width=1200, height= 1200)
 
   plot(st_geometry(na_bb_lcc), col="white", border="black", lwd=2)
   plot(st_geometry(na_grat30_lcc), col="gray50", add=TRUE)
@@ -72,7 +72,7 @@ for (i in seq(0, 26, by=1)) {
   plot(st_geometry(st_crop(ice_lcc, na_bb_lcc)), col="plum1", add=TRUE)
   plot(st_geometry(na_bbline_lcc), col="black", lwd=2, add=TRUE)
 
-  text(-3600000, -3000000, pos=1, cex=2.0, title)
+  text(-3500000, -3000000, pos=1, cex=5.0, title)
 
   dev.off()
 

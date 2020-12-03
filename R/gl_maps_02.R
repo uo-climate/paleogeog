@@ -57,9 +57,9 @@ for (i in seq(0, 26, by=1)) {
 
   # plot projected shapefiles
   png_file <- paste("pngs/globe/globe_", age, "_ka.png", sep="")
-  png(file = png_file, width=1200, height= 600)
-
-  plot(st_geometry(gl_bb_rob), col="white", border="black", lwd=2)
+  png(file = png_file, width=2400, height= 1200)
+  
+  plot(st_geometry(gl_bb_rob), col="white", border="black" )
   plot(st_geometry(gl_grat30_rob), col="gray50", add=TRUE)
   plot(st_geometry(gl_coast_rob), col="gray80", add=TRUE)
   plot(st_geometry(gl_admin0_rob), border="gray80", add=TRUE)
@@ -71,7 +71,7 @@ for (i in seq(0, 26, by=1)) {
   plot(st_geometry(ice_rob), col="plum1", add=TRUE)
   plot(st_geometry(gl_bbline_rob), col="black", lwd=2, add=TRUE)
 
-  text(-14000000, -7700000, pos=1, cex=2.0, title)
+  text(-14000000, -7700000, pos=1, cex=5.0, title)
 
   dev.off()
 
